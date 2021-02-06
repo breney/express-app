@@ -13,10 +13,12 @@ form
     br
     input#edition(type='text' name='edition')
     br
-    label(for='author') Author:
+    label(for='author') Choose a Author:
+    select#author(name='author')
+        option(value='author') Author1
     br
-    input#author(type='text' name='author')
-    br
-    label(for='publishers') Publishers:
+    label(for='publisher') Choose a Publisher:
+    select#publisher(name='publisher')
+        option(value='author') Publisher
     br
     input#publishers(type='text' name='publishers')
