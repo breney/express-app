@@ -17,6 +17,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', function (req, res) {
+  res.send("ok")
+});
 
 app.use('/api/books',require('./routes/books'));
 app.use('/api/customers', require('./routes/customers'));
