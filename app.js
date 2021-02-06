@@ -3,12 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var connection = require('./config/db');
-connection.catch();
-
-var booksRoute = require('./routes/books');
-var customersRoute = require('./routes/customers');
-var requestsRoute = require('./routes/requests')
+require('./config/db');
 
 var app = express();
 
@@ -22,9 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/books',booksRoute);
-app.use('/customers', customersRoute);
-app.use('/request', requestsRoute);
+app.use('/', function (req, res) {
+  res.send("ok")
+});
+
+app.use('/api/books',require('./routes/books'));
+app.use('/api/customers', require('./routes/customers'));
+app.use('/api/request', require('./routes/requests'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,6 +40,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-var mongoose = require('mongoose');
-console.log(mongoose.connection.readyState);
+
 module.exports = app;

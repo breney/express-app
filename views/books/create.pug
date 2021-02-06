@@ -1,0 +1,24 @@
+extends views/layout
+
+form
+    label(for='name') Name:
+    br
+    input#name(type='text' name='name')
+    br
+    label(for='isbn') Isbn:
+    br
+    input#isbn(type='text' name='isbn')
+    br
+    label(for='edition') Edition:
+    br
+    input#edition(type='text' name='edition')
+    br
+    label(for='author') Choose a Author:
+    select#author(name='author')
+        option(value='author') Author1
+    br
+    label(for='publisher') Choose a Publisher:
+    select#publisher(name='publisher')
+        option(value='author') Publisher
+    br
+    input#publishers(type='text' name='publishers')
