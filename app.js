@@ -3,8 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var connection = require('./config/db');
-connection.catch();
+require('./config/db');
 
 var booksRoute = require('./routes/books');
 var customersRoute = require('./routes/customers');
@@ -22,9 +21,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/books',booksRoute);
-app.use('/customers', customersRoute);
-app.use('/request', requestsRoute);
+
+app.use('/api/books',booksRoute);
+app.use('/api/customers', customersRoute);
+app.use('/api/request', requestsRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,6 +41,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-var mongoose = require('mongoose');
-console.log(mongoose.connection.readyState);
+
 module.exports = app;
