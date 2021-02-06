@@ -2,36 +2,18 @@ var express = require('express'),
     router = express.Router(),
     customer = require('../../models/customers');
 
-router.get('/', function(req, res) {
-  customer.find({}, function (err, data) {
-    if (err) {
-      res.send(err);
-      return;
-    }
-    res.send(data);
-  });
-});
-
-router.get('/:id', function(req, res) {
-  var id = req.params.id;
-  customer.findById(id, function (err, data) {
-    if (err) {
-      res.send("error");
-      return;
-    }
-    res.send(data);
-  });
-});
 
 router.post("/", function(req, res) {
   var obj = req.body;
+  console.log(req.body);
   var model = new customer(obj);
-  model.save(function(err) {
+  model.save(function(err,data) {
     if (err) {
       res.send("error");
       return;
     }
-    res.send("criado com sucesso");
+    console.log('criado com sucesso');
+    res.redirect('/customers');
   })
 })
 

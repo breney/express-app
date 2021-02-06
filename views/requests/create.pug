@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    form
+        label Books Disponiveis
+        br
+        p
+        select.selectpicker#book(multiple='' data-live-search='true' name='book')
+            each book in books
+                option(value=book.id)= book.name
+        p
+        br
+        labl Biblioteca
+        br
+        label(for='name') Name :
+        input#name(type='text' name='name')
+        br
+        label(for='address') Address :
+        input#address(type='text' name='address')
+        br
+        label(for='phone') Phone :
+        input#phone(type='text' name='phone')
+        br
+        p
+        button(type='submit') Create
+
