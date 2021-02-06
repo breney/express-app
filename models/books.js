@@ -11,6 +11,6 @@ var bookSchema = new Schema({
     publisher: [{name: {type: String}, address: {type:String}, phone: {type:String}}],
 }, {versionKey: false})
 
-var bookModel = mongoose.model('Book', bookSchema, 'books')
+var bookModel = mongoose.model('books', bookSchema, 'books')
 
 module.exports = bookModel;
