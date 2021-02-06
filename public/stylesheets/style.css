@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+nav {
+  margin-bottom: 50px;
 }
-
 a {
   color: #00B7FF;
+}
+
+.table-options {
+  text-align: center;
+  width: 200px;
+}
+
+.table-options > a {
+  margin: 0 5px;
 }

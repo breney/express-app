@@ -7,8 +7,8 @@ var bookSchema = new Schema({
     name: {type: String, required: true},
     isbn: {type: String, required: true},
     edition: {type: String, required: true},
-    author: [{name: {type: String}, nationality: {type: String}}],
-    publisher: [{name: {type: String}, address: {type: String}, phone: {type: String}}],
+    author: {name: {type: String}, nationality: {type: String}},
+    publisher: {name: {type: String}, address: {type: String}, phone: {type: String}},
 }, {versionKey: false})
 
 var bookModel = mongoose.model('books', bookSchema, 'books')
