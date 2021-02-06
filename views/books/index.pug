@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    h1 Books
+    hr
+    table.table.table-bordered
+        thead
+            tr
+                th(scope='col') Name
+                th(scope='col') ISBN
+                th(scope='col') Edition
+                th(scope='col') Publisher
+                th(scope='col') Author
+                th(scope='col') Options
+        tbody
+            each book in books
+                tr
+                    td= book.name
+                    td= book.isbn
+                    td= book.edition
+                    td= book.publisher.name
+                    td= book.author.name
+                    td.table-options
+                        a.btn.btn-primary(type='button' href='/books/' + book._id)
+                            i.far.fa-eye
+                        a.btn.btn-success(type='button' href='/books/' + book._id + '/edit')
+                            i.fas.fa-edit
+                        a.btn.btn-danger(type='button' href='/books/' + book._id)
+                            i.far.fa-trash-alt
+
