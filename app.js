@@ -3,9 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var connection = require('./config/db');
+connection.catch();
 
+var booksRoute = require('./routes/books');
+var customersRoute = require('./routes/customers');
+var requestsRoute = require('./routes/requests')
 
-var pessoasRoute = require('./routes/pessoas')
 var app = express();
 
 // view engine setup
@@ -18,7 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/pessoas',pessoasRoute);
+app.use('/books',booksRoute);
+app.use('/customers', customersRoute);
+app.use('/request', requestsRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -35,5 +41,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
+var mongoose = require('mongoose');
+console.log(mongoose.connection.readyState);
 module.exports = app;
