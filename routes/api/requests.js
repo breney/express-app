@@ -1,11 +1,11 @@
 var express = require('express'),
     router = express.Router(),
-    customer = require('../models/customers');
+    request = require('../../models/requests');
 
 router.get('/', function(req, res) {
-  customer.find({}, function (err, data) {
+  request.find({}, function (err, data) {
     if (err) {
-      res.send(err);
+      res.send("error");
       return;
     }
     res.send(data);
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   var id = req.params.id;
-  customer.findById(id, function (err, data) {
+  request.findById(id, function (err, data) {
     if (err) {
       res.send("error");
       return;
@@ -25,7 +25,7 @@ router.get('/:id', function(req, res) {
 
 router.post("/", function(req, res) {
   var obj = req.body;
-  var model = new customer(obj);
+  var model = new request(obj);
   model.save(function(err) {
     if (err) {
       res.send("error");
@@ -38,7 +38,7 @@ router.post("/", function(req, res) {
 router.post("/:id", function(req, res) {
   var id = req.params.id;
   var obj = req.body;
-  customer.findByIdAndUpdate(id, obj, function(err) {
+  request.findByIdAndUpdate(id, obj, function(err) {
     if (err) {
       res.send("error");
       return;
@@ -49,7 +49,7 @@ router.post("/:id", function(req, res) {
 
 router.delete("/:id", function(req, res) {
   var id = req.params.id;
-  customer.findByIdAndRemove(id, function(err, data) {
+  request.findByIdAndRemove(id, function(err, data) {
     if (err) {
       res.send("error");
       return;
