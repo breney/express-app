@@ -7,9 +7,9 @@ var customerSchema = new Schema({
     name: {type: String, required: true},
     address: {type: String, required: true},
     phone: {type: String, required: true},
-    age: {type: BigInt, required: true}
+    age: {type: Number, required: true}
 }, {versionKey: false})
 
-var customerModel = mongoose.model('Customer', customerSchema, 'customers')
+var customerModel = mongoose.model('customers', customerSchema, 'customers')
 
 module.exports = customerModel;

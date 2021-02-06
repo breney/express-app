@@ -11,6 +11,6 @@ var requestSchema = new Schema({
     librarian: [{name : {type: String} , address: {type:String}, phone: {type:String}, schedule: {type:Date}}],
 }, {versionKey: false})
 
-var requestModel = mongoose.model('Request', requestSchema, 'requests')
+var requestModel = mongoose.model('requests', requestSchema, 'requests')
 
 module.exports = requestModel;

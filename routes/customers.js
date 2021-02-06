@@ -1,11 +1,11 @@
 var express = require('express'),
     router = express.Router(),
-    book = require('../models/books.js');
+    customer = require('../models/customers');
 
 router.get('/', function(req, res) {
-  book.find({}, function (err, data) {
+  customer.find({}, function (err, data) {
     if (err) {
-      res.send("ola baby");
+      res.send(err);
       return;
     }
     res.send(data);
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   var id = req.params.id;
-  book.findById(id, function (err, data) {
+  customer.findById(id, function (err, data) {
     if (err) {
       res.send("error");
       return;
@@ -25,7 +25,7 @@ router.get('/:id', function(req, res) {
 
 router.post("/", function(req, res) {
   var obj = req.body;
-  var model = new book(obj);
+  var model = new customer(obj);
   model.save(function(err) {
     if (err) {
       res.send("error");
@@ -38,7 +38,7 @@ router.post("/", function(req, res) {
 router.post("/:id", function(req, res) {
   var id = req.params.id;
   var obj = req.body;
-  book.findByIdAndUpdate(id, obj, function(err) {
+  customer.findByIdAndUpdate(id, obj, function(err) {
     if (err) {
       res.send("error");
       return;
@@ -49,7 +49,7 @@ router.post("/:id", function(req, res) {
 
 router.delete("/:id", function(req, res) {
   var id = req.params.id;
-  book.findByIdAndRemove(id, function(err, data) {
+  customer.findByIdAndRemove(id, function(err, data) {
     if (err) {
       res.send("error");
       return;
