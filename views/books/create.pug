@@ -1,24 +1,29 @@
-extends views/layout
+extends ../layout
 
-form
-    label(for='name') Name:
-    br
-    input#name(type='text' name='name')
-    br
-    label(for='isbn') Isbn:
-    br
-    input#isbn(type='text' name='isbn')
-    br
-    label(for='edition') Edition:
-    br
-    input#edition(type='text' name='edition')
-    br
-    label(for='author') Choose a Author:
-    select#author(name='author')
-        option(value='author') Author1
-    br
-    label(for='publisher') Choose a Publisher:
-    select#publisher(name='publisher')
-        option(value='author') Publisher
-    br
-    input#publishers(type='text' name='publishers')
+block content
+    form
+        label(for='name') Name:
+        br
+        input#name(type='text' name='name')
+        br
+        label(for='isbn') Isbn:
+        br
+        input#isbn(type='text' name='isbn')
+        br
+        label(for='edition') Edition:
+        br
+        input#edition(type='text' name='edition')
+        br
+        label(for='author') Choose a Author:
+        br
+        select#author(name='author')
+            each author in authors
+                option(value=author.id)= author.name
+        br
+        label(for='publisher') Choose a Publisher:
+        br
+        select#publisher(name='publisher')
+            each publisher in publishers
+                option(value=publisher.id)= publisher.name
+        br
+        button(type='submit') Create

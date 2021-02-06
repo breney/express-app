@@ -1,20 +1,20 @@
-extends views/layout
-
-form(action='customers/' method='POST')
-    label(for='name') Name:
-    br
-    input#name(type='text' name='name')
-    br
-    label(for='address') Address:
-    br
-    input#address(type='text' name='address')
-    br
-    label(for='phone') Phone:
-    br
-    input#phone(type='text' name='phone')
-    br
-    label(for='age') Age:
-    br
-    input#age(type='text' name='age')
-    br
-    button(type='submit' value='Create')
+extends ../layout
+block content
+    form(action='/api/customers/' method='POST')
+        label(for='name') Name:
+        br
+        input#name(type='text' name='name')
+        br
+        label(for='address') Address:
+        br
+        input#address(type='text' name='address')
+        br
+        label(for='phone') Phone:
+        br
+        input#phone(type='text' name='phone')
+        br
+        label(for='age') Age:
+        br
+        input#age(type='text' name='age')
+        br
+        button(type='submit') Create

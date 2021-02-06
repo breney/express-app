@@ -16,13 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', function (req, res) {
-  res.send("ok")
-});
 
-app.use('/api/books',require('./routes/books'));
-app.use('/api/customers', require('./routes/customers'));
-app.use('/api/request', require('./routes/requests'));
+app.use('/api/books',require('./routes/api/books'));
+app.use('/api/customers', require('./routes/api/customers'));
+app.use('/api/request', require('./routes/api/requests'));
+
+app.use('/customers', require('./routes/customers'));
+app.use('/requests', require('./routes/requests'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
