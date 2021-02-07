@@ -1,20 +1,21 @@
 extends ../layout
 block content
-    form(action='/api/customers/' method='POST')
-        label(for='name') Name:
-        br
-        input#name(type='text' name='name')
-        br
-        label(for='address') Address:
-        br
-        input#address(type='text' name='address')
-        br
-        label(for='phone') Phone:
-        br
-        input#phone(type='text' name='phone')
-        br
-        label(for='age') Age:
-        br
-        input#age(type='text' name='age')
-        br
-        button(type='submit') Create
+    .row.justify-content-center
+        .col-5
+            form(action='/api/customers/' method='POST')
+                h5 Book #{name}
+                .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' name="name")
+                .form-group
+                    label(for='address') Address
+                    input#address.form-control(type='text' name="address")
+                .form-group
+                    label(for='phone') Phone
+                    input#phone.form-control(type='text' name="phone")
+                .form-group
+                    label(for='age') Age
+                    input#age.form-control(type='text' name="age")
+
+                button.btn.btn-danger.m-1() Create
+                a.btn.btn-primary(type='button' href='/') Voltar

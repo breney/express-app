@@ -13,22 +13,16 @@ html
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
-          li.nav-item.active
-            a.nav-link(href='#')
-              | Books
-              span.sr-only (current)
           li.nav-item
-            a.nav-link(href='#') Customers
-          li.nav-item.dropdown
-            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-              | Requests
-            .dropdown-menu(aria-labelledby='navbarDropdown')
-              a.dropdown-item(href='#') Action
-              a.dropdown-item(href='#') Another action
-              .dropdown-divider
-              a.dropdown-item(href='#') Something else here
+            a.nav-link(href='/') Inicio
           li.nav-item
-            a.nav-link.disabled(href='#') Disabled
+            a.nav-link(href='/books') Books
+          li.nav-item
+            a.nav-link(href='/customers') Customers
+          li.nav-item
+            a.nav-link(href='#') Requests
+          li.nav-item
+
     .container-fluid
       .row.justify-content-center
         .col-10

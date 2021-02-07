@@ -1,29 +1,31 @@
 extends ../layout
 
 block content
-    form
-        label(for='name') Name:
-        br
-        input#name(type='text' name='name')
-        br
-        label(for='isbn') Isbn:
-        br
-        input#isbn(type='text' name='isbn')
-        br
-        label(for='edition') Edition:
-        br
-        input#edition(type='text' name='edition')
-        br
-        label(for='author') Choose a Author:
-        br
-        select#author(name='author')
-            each author in authors
-                option(value=author.id)= author.name
-        br
-        label(for='publisher') Choose a Publisher:
-        br
-        select#publisher(name='publisher')
-            each publisher in publishers
-                option(value=publisher.id)= publisher.name
-        br
-        button(type='submit') Create
+    .row.justify-content-center
+        .col-5
+            form
+                h5 Book #{name}
+                .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' value=name)
+                .form-group
+                    label(for='isbn') ISBN
+                    input#isbn.form-control(type='text' value=isbn)
+                .form-group
+                    label(for='edition') ISBN
+                    input#edition.form-control(type='text' value=edition)
+                .form-group
+                    label(for='author') Choose a Author:
+                    br
+                    select.form-control#author(name='author')
+                        each author in authors
+                            option(value=author.id)= author.name
+                .form-group
+                    label(for='publisher') Choose a Publisher:
+                    br
+                    select.form-control#publisher(name='publisher')
+                        each publisher in publishers
+                            option(value=publisher.id)= publisher.name
+
+                button.btn.btn-danger.m-1() Create
+                a.btn.btn-primary(type='button' href='/') Voltar

@@ -1,5 +1,61 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .jumbotron
+    h1.display-4 Bem vindo ao site LibrayDb
+    hr.my-4
+    p
+      | Leonardo Oliveira 2019619
+    p
+      | Bruno Pereira 2019619
+
+  h3 Secção de criação de dados
+    hr
+  p
+  .row
+    .col-4
+      .card
+        .card-header.text-center
+          h4.card-title Book
+        .card-body
+          p.card-text
+            | Campos necessarios para criação da coleção book :
+            ul
+              li Name
+              li Isbn
+              li Edition
+              li Author
+              li Publisher
+          p.text-center
+            a.btn.btn-primary(type='button' href='/books/create') Criação Book
+    .col-4
+      .card
+        .card-header.text-center
+          h4.card-title Customer
+        .card-body
+          p.card-text
+            | Campos necessarios para criação da coleção customer :
+            ul
+              li Name
+              li Address
+              li Phone
+              li Age
+              li .
+          p.text-center
+            a.btn.btn-primary(type='button' href='/customers/create') Criação Customer
+
+    .col-4
+      .card
+        .card-header.text-center
+          h4.card-title Request
+        .card-body
+          p.card-text
+            | Campos necessarios para criação da coleção request :
+            ul
+              li Book
+              li Librarian name
+              li Librarian address
+              li Librarian phone
+              li .
+          p.text-center
+            a.btn.btn-primary(type='button' href='/books/') Criação Request

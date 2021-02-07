@@ -8,6 +8,12 @@ router.get('/', function(req, res) {
   });
 });
 
+router.get('/create', function(req, res) {
+  customer.find({}, function (err, data) {
+    res.render('customers/create');
+  });
+});
+
 router.get('/:id', function(req, res) {
   var id = req.params.id;
   customer.findById(id, function (err, data) {
