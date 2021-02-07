@@ -1,10 +1,19 @@
 extends ../layout
 
 block content
-    h1 Book - #{name}
-    ul
-        li Name: #{name}
-        li ISBN: #{isbn}
-        li Edition: #{edition}
-        li Publisher: #{publisher.name}
-        li Author: #{author.name}
+    .row.justify-content-center
+        .col-5
+            .card
+                .card-header
+                    h4.card-title Book - #{name}
+                .card-body
+                    p.card-text
+                        ul
+                            li Name: #{name}
+                            li ISBN: #{isbn}
+                            li Edition: #{edition}
+                            li Publisher: #{publisher.name}
+                            li author: #{author.name}
+                    a.btn.btn-primary(type='button' href='/books/') Voltar
+
+

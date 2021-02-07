@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+    .row.justify-content-center
+        .col-5
+            form
+                h5 Book #{name}
+                .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' value=name)
+                .form-group
+                    label(for='isbn') ISBN
+                    input#isbn.form-control(type='text' value=isbn)
+                .form-group
+                    label(for='edition') ISBN
+                    input#edition.form-control(type='text' value=edition)
+
+                button.btn.btn-success(type='submit') Edit
+                a.btn.btn-danger.m-1(type='button' href='/books/') Voltar
+
+
+
