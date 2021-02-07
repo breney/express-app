@@ -42,7 +42,52 @@ router.get('/create', async function(req,res){
     res.render('requests/create', {books: books, customers: customers});
 
 
-})
+});
+
+router.get('/:id/edit', function (req, res) {
+    const id = req.params.id;
+
+    request.aggregate([
+        {
+            $lookup: {
+                from: 'customers',
+                localField: 'customer_id',
+                foreignField: '_id',
+                as: 'customer'
+            }
+        },
+        {
+            $lookup: {
+                from: 'books',
+                localField: 'books',
+                foreignField: '_id',
+                as: 'books'
+            }
+        },
+        {
+            $unwind: "$customer"
+        },
+        {
+            $match: {
+                _id:ObjectId(id)
+            }
+        }
+    ]).then(function (request) {
+        book.find({}, function (err, data) {
+            let books = data;
+            request = request[0];
+
+            books.forEach(function (element, index) {
+                request.books.forEach(function (e) {
+                    books[index].selected = e._id.toString() === element._id.toString();
+                })
+            })
+            res.render('requests/edit', {books, request});
+        });
+    })
+
+
+});
 
 router.get('/:id', async function (req, res) {
     var id = req.params.id;

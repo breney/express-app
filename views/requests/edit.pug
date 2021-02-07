@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+    .row.justify-content-center
+        .col-5
+            form(action='/api/books/' method='POST')
+                h5 Edit Request
+                .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' name="name" value=request.name)
+                .form-group
+                    label(for='address') Address
+                    input#address.form-control(type='text' name="address" value=request.address)
+                .form-group
+                    label(for='phone') Phone
+                    input#phone.form-control(type='text' name="phone" value=request.phone)
+                .form-group
+                    label(for='author') Books:
+                    br
+                    select.form-control#author(name='author' multiple='multiple')
+                        each book in books
+                            option(value=book._id selected=book.selected)= book.name
+
+                button.btn.btn-danger.m-1() Create
+                a.btn.btn-primary(type='button' href='/') Voltar
