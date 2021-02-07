@@ -19,15 +19,15 @@ block content
                     br
                     select.form-control#author(name='author')
                         each author in authors
-                            option(value=author._id selected=author._id === book.author._id)= author.name
+                            option(value=author selected=author._id == book.author._id)= author.name
                 .form-group
                     label(for='publisher') Choose a Publisher:
                     br
                     select.form-control#publisher(name='publisher')
                         each publisher in publishers
-                            option(value=publisher._id selected=publisher._id === book.publisher._id)= publisher.name
+                            option(value=publisher selected=publisher._id == book.publisher._id)= publisher.name
 
-                button.btn.btn-success.edit-request(type='submit' data-id=_id data-resource="books" data-form="#form-edit") Edit
+                button.btn.btn-success.edit-request(type='submit' data-id=book._id data-resource="books" data-form="#form-edit") Edit
                 a.btn.btn-danger.m-1(type='button' href='/books/') Voltar
 
 

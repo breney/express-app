@@ -3,23 +3,24 @@ extends ../layout
 block content
     .row.justify-content-center
         .col-5
-            form
+            form#form-edit
                 h5 Customer #{name}
                 .form-group
                     label(for='name') Name
-                    input#name.form-control(type='text' value=name)
+                    input#name.form-control(type='text' value=name name='name')
                 .form-group
                     label(for='address') Address
-                    input#address.form-control(type='text' value=address)
+                    input#address.form-control(type='text' value=address name='address')
                 .form-group
                     label(for='phone') Phone
-                    input#phone.form-control(type='text' value=phone)
+                    input#phone.form-control(type='text' value=phone name='phone')
                 .form-group
                     label(for='age') Age
-                    input#age.form-control(type='text' value=age)
+                    input#age.form-control(type='text' value=age name='age')
 
-                button.btn.btn-success(type='submit') Edit
+                button.btn.btn-success.edit-request(type='submit' data-id=_id data-resource="customers" data-form="#form-edit") Edit
                 a.btn.btn-danger.m-1(type='button' href='/customers/') Voltar
+
 
 
 

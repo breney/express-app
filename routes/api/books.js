@@ -33,8 +33,11 @@ router.post('/', function (req, res) {
 })
 
 router.post('/:id', function (req, res) {
-    var id = req.params.id;
-    var obj = req.body;
+    const id = req.params.id;
+    const obj = req.body;
+    obj.author = JSON.parse(req.body.author);
+    obj.publisher = JSON.parse(req.body.publisher);
+
     book.findByIdAndUpdate(id, obj, {useFindAndModify: true}, function (err) {
         if (err) {
             console.log(err);

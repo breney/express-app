@@ -4,9 +4,8 @@ var express = require('express'),
 
 
 router.post("/", function(req, res) {
-  var obj = req.body;
-  console.log(req.body);
-  var model = new customer(obj);
+  const obj = req.body;
+  const model = new customer(obj);
   model.save(function(err,data) {
     if (err) {
       res.send("error");
@@ -18,8 +17,8 @@ router.post("/", function(req, res) {
 })
 
 router.post("/:id", function(req, res) {
-  var id = req.params.id;
-  var obj = req.body;
+  const id = req.params.id;
+  const obj = req.body;
   customer.findByIdAndUpdate(id, obj, function(err) {
     if (err) {
       res.send("error");
