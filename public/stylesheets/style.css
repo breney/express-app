@@ -13,3 +13,7 @@ a {
 .table-options > a {
   margin: 0 5px;
 }
+
+.table-options > button  {
+  margin: 0 5px;
+}

@@ -25,6 +25,6 @@ block content
                             i.far.fa-eye
                         a.btn.btn-success(type='button' href='/books/' + book._id + '/edit')
                             i.fas.fa-edit
-                        a.btn.btn-danger(type='button' href='/books/' + book._id)
+                        button.btn.btn-danger.delete-request(type='button' data-id=book._id data-resource='books')
                             i.far.fa-trash-alt
 
