@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    .row.justify-content-center
+        .col-5
+            .card
+                .card-header
+                    h4.card-title Customer #{name}
+                .card-body
+                    p.card-text
+                        ul
+                            li Name: #{name}
+                            li ISBN: #{address}
+                            li Edition: #{phone}
+                            li Publisher: #{age}
+                    a.btn.btn-primary(type='button' href='/customers/') Voltar
+
+
