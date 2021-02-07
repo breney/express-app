@@ -14,17 +14,20 @@ block content
                 th(scope='col') Options
         tbody
             each request in requests
-                tr
-                    td
-                    td= request.customer_id
-                    td= request.librarian.name
-                    td= request.data_begin
-                    td= request.data_end
-                    td.table-options
-                        a.btn.btn-primary(type='button' )
-                            i.far.fa-eye
-                        a.btn.btn-success(type='button' )
-                            i.fas.fa-edit
-                        button.btn.btn-danger.delete-request(type='button' data-id=request._id data-resource='requests' )
-                            i.far.fa-trash-alt
+                    tr
+                        td.align-middle
+                            ul
+                                each book in request.books
+                                    li= book.name
+                        td.align-middle= request.customer.name
+                        td.align-middle= request.librarian.name
+                        td.align-middle= request.data_begin
+                        td.align-middle= request.data_end
+                        td.align-middle.table-options
+                            a.btn.btn-primary(type='button' href='/requests/' + request._id )
+                                i.far.fa-eye
+                            a.btn.btn-success(type='button' )
+                                i.fas.fa-edit
+                            button.btn.btn-danger.delete-request(type='button' data-id=request._id data-resource='requests' )
+                                i.far.fa-trash-alt
 
