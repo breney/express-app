@@ -3,10 +3,10 @@ var express = require('express'),
 
 var book = require('../models/books.js');
 
-router.get('/create', async function (req, res) {
+async function getAuthorsAndPublishers() {
     let data = {};
 
-    await book.aggregate([{$unwind: '$author'}, {$group: {_id: '$author._id',  name: {$first: "$author.name"},}}])
+    await book.aggregate([{$unwind: '$author'}, {$group: {_id: '$author._id', name: {$first: "$author.name"},}}])
         .then(result => data.authors = result)
         .catch(console.log)
 
@@ -16,8 +16,12 @@ router.get('/create', async function (req, res) {
     ]).then(result => data.publishers = result)
         .catch(console.log)
 
-    console.log(data);
-    res.render('books/create', data);
+    return data;
+}
+
+router.get('/create', async function (req, res) {
+
+    res.render('books/create', await getAuthorsAndPublishers());
 });
 
 router.get('/', function (req, res) {
@@ -44,15 +48,16 @@ router.get('/:id', function (req, res) {
     });
 });
 
-router.get('/:id/edit', function (req, res) {
+router.get('/:id/edit', async function (req, res) {
     var id = req.params.id;
-    book.findById(id, function (err, data) {
+    let response =  await getAuthorsAndPublishers();
+    await book.findById(id, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        console.log(data);
-        res.render('books/edit', data);
+
+        res.render('books/edit', {book: data, publishers: response.publishers, authors: response.authors});
     });
 });
 

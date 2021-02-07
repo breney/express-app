@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    function editRequest(id, resource, data) {
+    function editRequest(id, resource, formId) {
         return $.ajax({
             url: `/api/${resource}/${id}`,
             method: 'POST',
-            data: data,
+            data: $(formId).serialize(),
         })
     }
 
@@ -24,7 +24,9 @@ $(document).ready(function () {
 
     $('.edit-request').click(function (event) {
         event.preventDefault();
-        editRequest($(this).data('id'), $(this).data('resource'), $(this).data('info'));
+        editRequest($(this).data('id'), $(this).data('resource'), $(this).data('form'))
+            .then(_ => window.location = '/' + $(this).data('resource'));
+        //history.back();
     });
 
     $('.delete-request').click(function (event) {

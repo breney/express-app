@@ -18,8 +18,9 @@ router.post('/', function (req, res) {
 router.post('/:id', function (req, res) {
     var id = req.params.id;
     var obj = req.body;
-    book.findByIdAndUpdate(id, obj, function (err) {
+    book.findByIdAndUpdate(id, obj, {useFindAndModify: true}, function (err) {
         if (err) {
+            console.log(err);
             res.send("error");
             return;
         }

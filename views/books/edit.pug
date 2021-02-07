@@ -3,19 +3,31 @@ extends ../layout
 block content
     .row.justify-content-center
         .col-5
-            form
-                h5 Book #{name}
+            form#form-edit
+                h5 Book #{book.name}
                 .form-group
                     label(for='name') Name
-                    input#name.form-control(type='text' value=name)
+                    input#name.form-control(type='text' name="name" value=book.name)
                 .form-group
                     label(for='isbn') ISBN
-                    input#isbn.form-control(type='text' value=isbn)
+                    input#isbn.form-control(type='text' name='isbn' value=book.isbn)
                 .form-group
                     label(for='edition') ISBN
-                    input#edition.form-control(type='text' value=edition)
+                    input#edition.form-control(type='number' name='edition' value=book.edition)
+                .form-group
+                    label(for='author') Choose a Author:
+                    br
+                    select.form-control#author(name='author')
+                        each author in authors
+                            option(value=author._id selected=author._id === book.author._id)= author.name
+                .form-group
+                    label(for='publisher') Choose a Publisher:
+                    br
+                    select.form-control#publisher(name='publisher')
+                        each publisher in publishers
+                            option(value=publisher._id selected=publisher._id === book.publisher._id)= publisher.name
 
-                button.btn.btn-success(type='submit') Edit
+                button.btn.btn-success.edit-request(type='submit' data-id=_id data-resource="books" data-form="#form-edit") Edit
                 a.btn.btn-danger.m-1(type='button' href='/books/') Voltar
 
 
