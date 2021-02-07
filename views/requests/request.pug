@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    .row.justify-content-center
+        .col-5
+            .card
+                .card-header
+                    h4.card-title Costumer #{request.customer.name}
+                .card-body
+                    p.card-text
+                        ul
+
+                            li Librarian name : #{request.librarian.name}
+                            li Librarian address : #{request.librarian.address}
+                            li Librarian phone : #{request.librarian.phone}
+                            p
+                            h5.li Books:
+
+                            ul
+                                each book in request.books
+                                    li Nome : #{book.name}, Edition : #{book.edition}
+                    a.btn.btn-primary(type='button' href='/requests/') Voltar
+
+

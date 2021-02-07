@@ -30,7 +30,6 @@ router.get('/', function (req, res) {
             res.send(err);
             return;
         }
-
         console.log(data)
         res.render('books/index', {books: data});
     });
