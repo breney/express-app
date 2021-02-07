@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+    h1 Customers
+    hr
+    table.table.table-bordered
+        thead
+            tr
+                th(scope='col') Name
+                th(scope='col') Address
+                th(scope='col') Phone
+                th(scope='col') Age
+                th(scope='col') Options
+        tbody
+            each customer in customers
+                tr
+                    td= customer.name
+                    td= customer.address
+                    td= customer.phone
+                    td= customer.age
+                    td.table-options
+                        a.btn.btn-primary(type='button' href='/customers/' + customer._id)
+                            i.far.fa-eye
+                        a.btn.btn-success(type='button' href='/customers/' + customer._id + '/edit')
+                            i.fas.fa-edit
+                        a.btn.btn-danger(type='button' href='/customers/' + customer._id)
+                            i.far.fa-trash-alt
+

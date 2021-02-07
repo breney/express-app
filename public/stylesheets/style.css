@@ -14,6 +14,13 @@ a {
   margin: 0 5px;
 }
 
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
 .table-options > button  {
   margin: 0 5px;
 }

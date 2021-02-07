@@ -44,4 +44,17 @@ router.get('/:id', function (req, res) {
     });
 });
 
+router.get('/:id/edit', function (req, res) {
+    var id = req.params.id;
+    book.findById(id, function (err, data) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        console.log(data);
+        res.render('books/edit', data);
+    });
+});
+
+
 module.exports = router;
