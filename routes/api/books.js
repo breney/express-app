@@ -4,14 +4,31 @@ var express = require('express'),
 var book = require('../../models/books.js');
 
 router.post('/', function (req, res) {
-    var obj = req.body;
+    author = JSON.parse(req.body.author);
+    publisher = JSON.parse(req.body.publisher);
+    var obj = {
+        name : req.body.name,
+        isbn: req.body.isbn,
+        edition: req.body.edition,
+        author:{
+            name: author.name,
+            nationality: author.nationality
+        },
+        publisher: {
+            name: publisher.name,
+            address: publisher.address,
+            phone: publisher.phone
+        }
+    };
+    console.log(obj);
     var model = new book(obj);
+    console.log(model);
     model.save(function (err) {
         if (err) {
-            res.send("error");
+            res.send(err);
             return;
         }
-        res.send("criado com sucesso");
+        res.redirect("/books");
     })
 })
 
