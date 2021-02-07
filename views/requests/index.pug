@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    h1 Requests
+    hr
+    table.table.table-bordered
+        thead
+            tr
+                th(scope='col') Books
+                th(scope='col') Customer
+                th(scope='col') Librarian Name
+                th(scope='col') Date Begin
+                th(scope='col') Date End
+                th(scope='col') Options
+        tbody
+            each request in requests
+                tr
+                    td
+                    td= request.customer_id
+                    td= request.librarian.name
+                    td= request.data_begin
+                    td= request.data_end
+                    td.table-options
+                        a.btn.btn-primary(type='button' )
+                            i.far.fa-eye
+                        a.btn.btn-success(type='button' )
+                            i.fas.fa-edit
+                        button.btn.btn-danger.delete-request(type='button' data-id=request._id data-resource='requests' )
+                            i.far.fa-trash-alt
+
