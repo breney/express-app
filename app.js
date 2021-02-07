@@ -20,7 +20,7 @@ app.use('/',require('./routes/index'));
 
 app.use('/api/books', require('./routes/api/books'));
 app.use('/api/customers', require('./routes/api/customers'));
-app.use('/api/request', require('./routes/api/requests'));
+app.use('/api/requests', require('./routes/api/requests'));
 
 app.use('/books', require('./routes/books'));
 app.use('/customers', require('./routes/customers'));
