@@ -6,15 +6,15 @@ var book = require('../models/books.js');
 router.get('/create', async function (req, res) {
     let data = {};
 
-    await book.aggregate([{$unwind: '$author'}, {$group: {_id: '$author._id',  name: {$first: "$author.name"},}}])
+    await book.aggregate([{$unwind: '$author'}, {$group: {_id: '$author._id',  name: {$first: "$author.name"}, nationality: {$first: "$author.nationality"}}}])
         .then(result => data.authors = result)
-        .catch(console.log)
+
 
     await book.aggregate([
         {$unwind: '$publisher'},
-        {$group: {_id: '$publisher._id', name: {$first: "$publisher.name"},}}
+        {$group: {_id: '$publisher._id', name: {$first: "$publisher.name"}, address: {$first : "$publisher.address"}, phone:{$first : "$publisher.phone"}}}
     ]).then(result => data.publishers = result)
-        .catch(console.log)
+
 
     console.log(data);
     res.render('books/create', data);

@@ -3,29 +3,29 @@ extends ../layout
 block content
     .row.justify-content-center
         .col-5
-            form
+            form(action='/api/books/' method='POST')
                 h5 Book #{name}
                 .form-group
                     label(for='name') Name
-                    input#name.form-control(type='text' value=name)
+                    input#name.form-control(type='text' name="name")
                 .form-group
                     label(for='isbn') ISBN
-                    input#isbn.form-control(type='text' value=isbn)
+                    input#isbn.form-control(type='text' name="isbn")
                 .form-group
-                    label(for='edition') ISBN
-                    input#edition.form-control(type='text' value=edition)
+                    label(for='edition') Edition
+                    input#edition.form-control(type='text' name="edition")
                 .form-group
                     label(for='author') Choose a Author:
                     br
                     select.form-control#author(name='author')
                         each author in authors
-                            option(value=author.id)= author.name
+                            option(value=author)= author.name
                 .form-group
                     label(for='publisher') Choose a Publisher:
                     br
                     select.form-control#publisher(name='publisher')
                         each publisher in publishers
-                            option(value=publisher.id)= publisher.name
+                            option(value=publisher)= publisher.name
 
                 button.btn.btn-danger.m-1() Create
                 a.btn.btn-primary(type='button' href='/') Voltar
