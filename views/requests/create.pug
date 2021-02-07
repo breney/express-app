@@ -6,13 +6,13 @@ block content
             form(action='/api/books/' method='POST')
                 h5 Book #{name}
                 .form-group
-                    label(for='name') Name
+                    label(for='name') Librarian Name
                     input#name.form-control(type='text' name="address")
                 .form-group
-                    label(for='address') Address
+                    label(for='address') Librarian Address
                     input#address.form-control(type='text' name="address")
                 .form-group
-                    label(for='phone') Phone
+                    label(for='phone') Librarian Phone
                     input#phone.form-control(type='text' name="phone")
                 .form-group
                     label(for='author') Choose a Book:
@@ -20,5 +20,11 @@ block content
                     select.form-control#author(name='author')
                         each book in books
                             option(value=book.id)= book.name
+                .form-group
+                    label(for='author') Choose a customer:
+                    br
+                    select.form-control#customer(name='customer')
+                        each customer in customers
+                            option(value=customer.id)= customer.name
                 button.btn.btn-danger.m-1() Create
                 a.btn.btn-primary(type='button' href='/') Voltar

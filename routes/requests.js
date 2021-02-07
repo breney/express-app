@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     request = require('../models/requests'),
-    book = require('../models/books');
+    book = require('../models/books'),
+    customer = require('../models/customers');
 
 const {ObjectId} = require("bson");
 
@@ -29,11 +30,18 @@ router.get('/', async function (req, res) {
     res.render('requests/index', {requests: requests});
 });
 
-router.get('/create', function (req,res){
-    book.find({}, function (err, data) {
-        res.render('requests/create', {books: data});
+router.get('/create', async function(req,res){
 
-    });
+    let books = {};
+    let customers = {};
+
+    await customer.aggregate([{$project : { name : 1}}]).then(result => customers = result);
+
+    await book.aggregate([{$project : { name : 1}}]).then(result => books = result);
+
+    res.render('requests/create', {books: books, customers: customers});
+
+
 })
 
 router.get('/:id', async function (req, res) {

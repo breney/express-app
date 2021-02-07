@@ -24,7 +24,10 @@ router.get('/:id', function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  var obj = req.body;
+  var obj = {
+    data_begin : Date.now(),
+
+  };
   var model = new request(obj);
   model.save(function(err) {
     if (err) {
