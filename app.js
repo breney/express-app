@@ -16,11 +16,13 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/books', require('./routes/books'));
+app.use('/',require('./routes/index'));
+
 app.use('/api/books', require('./routes/api/books'));
 app.use('/api/customers', require('./routes/api/customers'));
 app.use('/api/request', require('./routes/api/requests'));
 
+app.use('/books', require('./routes/books'));
 app.use('/customers', require('./routes/customers'));
 app.use('/requests', require('./routes/requests'));
 

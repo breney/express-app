@@ -23,6 +23,6 @@ block content
                             i.far.fa-eye
                         a.btn.btn-success(type='button' href='/customers/' + customer._id + '/edit')
                             i.fas.fa-edit
-                        a.btn.btn-danger(type='button' href='/customers/' + customer._id)
+                        button.btn.btn-danger.delete-request(type='button' data-id=customer._id data-resource='customers' )
                             i.far.fa-trash-alt
 

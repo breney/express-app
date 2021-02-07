@@ -36,7 +36,7 @@ router.delete("/:id", function(req, res) {
       res.send("error");
       return;
     }
-    res.send(data);
+    res.render('customers/edit', data);
   })
 })
 
